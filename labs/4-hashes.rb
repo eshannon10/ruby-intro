@@ -28,5 +28,12 @@ bitcoin = gets.chomp
 # 2. The value will be a string, so you'll want to convert it to a Float.
 bitcoin = bitcoin.to_f
 
-# 3. inspect the bitcoin_data hash
-# puts bitcoin_data
+# 3. Extract the correct Bitcoin price in USD from the API response
+current_price = bitcoin_data["bpi"]["USD"]["rate_float"]
+
+# 4. Calculate the value of the user's Bitcoin in USD
+bitcoin_worth = bitcoin * current_price
+
+# 5. Display the results
+puts "1 Bitcoin is valued at $#{current_price} USD."
+puts "Your Bitcoin is worth $#{bitcoin_worth.round(4)}."
